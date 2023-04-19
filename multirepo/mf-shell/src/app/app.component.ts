@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-// import { CommonsLibService } from '@commons-lib';
+import PubSub from 'pubsub-js';
+
+export interface ICommonProduct {
+  price: number;
+  name: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -7,7 +12,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'mf-shell';
+  count = 0;
+  private _products: ICommonProduct[] = [];
 
-  // constructor(public commonsLibService: CommonsLibService) { }
+  ngOnInit() {
+    PubSub.subscribe('products', (_message, data) => {
+      this._products.push(data as unknown as ICommonProduct);
+      this.count++;
+      localStorage.setItem('products', JSON.stringify(this._products));
+    })
+  }
 }

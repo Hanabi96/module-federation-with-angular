@@ -6,7 +6,6 @@ export interface ICommonProduct {
   name: string;
 }
 
-
 @Component({
   standalone: true,
   selector: 'app-payment',

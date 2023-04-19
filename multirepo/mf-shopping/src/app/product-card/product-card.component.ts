@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IProductCard } from '../models/product-card.interface';
-// import { CommonsLibService } from '@commons-lib';
 import { CommonModule } from '@angular/common';
+import PubSub from 'pubsub-js';
 
 @Component({
   standalone: true,
@@ -13,12 +13,7 @@ import { CommonModule } from '@angular/common';
 export class ProductCardComponent {
   @Input() product?: IProductCard;
 
-  // constructor(private _commonsLibService: CommonsLibService) { }
-
   clickCard(): void {
-    // this._commonsLibService.sendData({
-    //   name: this.product!.name,
-    //   price: this.product!.price,
-    // });
+    PubSub.publish('products', this.product);
   }
 }
