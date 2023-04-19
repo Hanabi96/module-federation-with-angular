@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonsLibService } from '@commons-lib';
+// import { CommonsLibService } from '@commons-lib';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +9,5 @@ import { CommonsLibService } from '@commons-lib';
 export class AppComponent {
   title = 'mf-shell';
 
-  constructor(public commonsLibService: CommonsLibService) { }
+  // constructor(public commonsLibService: CommonsLibService) { }
 }
