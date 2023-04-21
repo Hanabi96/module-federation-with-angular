@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { IProductCard } from '../models/product-card.interface';
 import { CommonModule } from '@angular/common';
 import PubSub from 'pubsub-js';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -13,7 +14,13 @@ import PubSub from 'pubsub-js';
 export class ProductCardComponent {
   @Input() product?: IProductCard;
 
+  constructor(private router: Router) { }
+
   clickCard(): void {
     PubSub.publish('products', this.product);
+  }
+
+  navigate(): void {
+    this.router.navigate(['/test']);
   }
 }
